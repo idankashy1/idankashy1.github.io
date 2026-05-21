@@ -1694,6 +1694,7 @@ html[dir="rtl"] .chat-msg-ai { flex-direction: row-reverse; }
 }
 .chat-input {
   flex: 1;
+  min-width: 0;
   background: var(--bg-elev);
   border: 1px solid var(--border-strong);
   border-radius: 10px;
@@ -1703,6 +1704,12 @@ html[dir="rtl"] .chat-msg-ai { flex-direction: row-reverse; }
   color: var(--text);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
+}
+/* iOS Safari auto-zooms any input whose font-size is < 16px when it gains
+   focus — pushing the send button off-screen and creating horizontal scroll.
+   16px on mobile is the silver bullet to disable that behavior. */
+@media (max-width: 768px) {
+  .chat-input { font-size: 16px; }
 }
 .chat-input::placeholder { color: var(--text-faint); }
 .chat-input:focus {
