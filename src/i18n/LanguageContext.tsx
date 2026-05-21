@@ -21,10 +21,12 @@ export const LanguageContext = createContext<LanguageContextValue>({
 
 function detectInitialLang(): Lang {
   if (typeof window === 'undefined') return 'en'
+  // Honor an explicit user choice if they've toggled before, otherwise always
+  // start in English. Don't auto-switch based on browser language — recruiters
+  // and managers worldwide should land on the English experience by default.
   const stored = window.localStorage.getItem(STORAGE_KEY)
   if (stored === 'en' || stored === 'he') return stored
-  const browser = window.navigator.language?.toLowerCase() ?? ''
-  return browser.startsWith('he') ? 'he' : 'en'
+  return 'en'
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
