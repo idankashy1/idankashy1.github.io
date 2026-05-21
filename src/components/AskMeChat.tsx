@@ -147,8 +147,16 @@ export default function AskMeChat() {
   const [thinking, setThinking] = useState(false)
   const [pulseHidden, setPulseHidden] = useState(false)
   const scrollerRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLTextAreaElement>(null)
   const nextId = useRef(1)
+
+  /** Auto-grow the textarea up to a max height as the user types. */
+  useEffect(() => {
+    const el = inputRef.current
+    if (!el) return
+    el.style.height = 'auto'
+    el.style.height = `${Math.min(el.scrollHeight, 140)}px`
+  }, [input])
 
   const kb = lang === 'he' ? KNOWLEDGE_HE : KNOWLEDGE_EN
 
@@ -296,13 +304,21 @@ export default function AskMeChat() {
           )}
 
           <form className="chat-input-row" onSubmit={onSubmit}>
-            <input
+            <textarea
               ref={inputRef}
-              type="text"
               className="chat-input"
               placeholder={t.chat.placeholder}
               value={input}
               onChange={e => setInput(e.target.value)}
+              onKeyDown={e => {
+                // Enter submits; Shift+Enter inserts a newline. Match the
+                // convention every modern chat app uses.
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault()
+                  send(input)
+                }
+              }}
+              rows={1}
               aria-label={t.chat.placeholder}
             />
             <button

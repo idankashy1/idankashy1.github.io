@@ -1691,6 +1691,8 @@ html[dir="rtl"] .chat-msg-ai { flex-direction: row-reverse; }
   padding: 12px 16px;
   border-top: 1px solid var(--border);
   background: var(--bg-card);
+  /* Keep the send button anchored to the bottom while the textarea grows up. */
+  align-items: flex-end;
 }
 .chat-input {
   flex: 1;
@@ -1701,9 +1703,19 @@ html[dir="rtl"] .chat-msg-ai { flex-direction: row-reverse; }
   padding: 10px 14px;
   font-family: var(--font-sans);
   font-size: 13.5px;
+  line-height: 1.5;
   color: var(--text);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
+  /* Textarea-specific: kill the manual resize handle, hide the scrollbar
+     until content exceeds the JS-controlled max-height. */
+  resize: none;
+  overflow-y: auto;
+  max-height: 140px;
+  min-height: 38px;
+  /* Textareas inherit a different default font in some browsers — pin to the
+     site font so it matches the rest of the chat. */
+  font-family: inherit;
 }
 /* iOS Safari auto-zooms any input whose font-size is < 16px when it gains
    focus — pushing the send button off-screen and creating horizontal scroll.
