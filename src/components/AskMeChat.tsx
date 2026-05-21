@@ -252,7 +252,7 @@ export default function AskMeChat() {
         <div className="chat-panel" role="dialog" aria-label={t.chat.headerTitle}>
           <header className="chat-header">
             <div className="chat-header-id">
-              <div className="chat-avatar" aria-hidden="true">IK</div>
+              <div className="chat-avatar" aria-hidden="true">KAI</div>
               <div className="chat-header-text">
                 <div className="chat-header-title">{t.chat.headerTitle}</div>
                 <div className="chat-header-status">
@@ -280,7 +280,7 @@ export default function AskMeChat() {
             ))}
             {thinking && (
               <div className="chat-msg chat-msg-ai">
-                <div className="chat-avatar" aria-hidden="true">IK</div>
+                <div className="chat-avatar" aria-hidden="true">KAI</div>
                 <div className="chat-bubble chat-bubble-typing" aria-label={t.chat.typingAria}>
                   <TypingDots />
                 </div>
