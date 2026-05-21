@@ -1,5 +1,4 @@
 import { PROJECTS } from '../data/projects'
-import { ExternalIcon } from './Icons'
 import { useTranslation } from '../i18n/useTranslation'
 
 export default function Projects() {
@@ -31,7 +30,6 @@ export default function Projects() {
                     <span className="val">{item.value}</span>
                   </div>
                 </div>
-                <a href="#" className="project-link">{t.projects.viewDetails} <ExternalIcon /></a>
               </div>
             )
           })}
