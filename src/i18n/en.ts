@@ -220,6 +220,7 @@ export const en = {
     linkedinLabel: 'LinkedIn',
     locationLabel: 'Location',
     location: 'Israel',
+    emailCopied: 'Email copied to clipboard',
   },
 
   footer: {

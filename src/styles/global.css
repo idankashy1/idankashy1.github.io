@@ -1388,6 +1388,57 @@ html[dir="rtl"] .btn:hover .icon.arrow {
   box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.28);
 }
 
+/* ---------- Email-copied toast ---------- */
+.copy-toast {
+  position: fixed;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 110;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid rgba(94, 234, 212, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(94, 234, 212, 0.2),
+    0 16px 40px -12px rgba(0, 0, 0, 0.6),
+    0 0 40px -16px rgba(94, 234, 212, 0.4);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  animation: copy-toast-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.copy-toast-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #042f2c;
+  font-weight: 700;
+  font-size: 13px;
+}
+@keyframes copy-toast-in {
+  from { opacity: 0; transform: translate(-50%, -8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+:root[data-theme="light"] .copy-toast {
+  background: var(--bg-card);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(20, 184, 166, 0.2),
+    0 16px 40px -12px rgba(15, 23, 42, 0.2),
+    0 0 40px -16px rgba(20, 184, 166, 0.3);
+}
+:root[data-theme="light"] .copy-toast-check {
+  color: #ffffff;
+}
+
 /* Smooth crossfade when toggling theme */
 html { transition: background-color 0.25s ease; }
 body, .nav, .btn, .project-card, .skill-card, .ai-cell, .stat,

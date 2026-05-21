@@ -220,6 +220,7 @@ export const he: Dict = {
     linkedinLabel: 'LinkedIn',
     locationLabel: 'מיקום',
     location: 'ישראל',
+    emailCopied: 'האימייל הועתק',
   },
 
   footer: {
