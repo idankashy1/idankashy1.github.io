@@ -316,16 +316,23 @@ section { padding: 144px 0; position: relative; z-index: 1; }
   margin-inline: -16px;
 }
 .hero h1 .accent-text {
-  /* Gradient alone differentiates the accent — italic was causing visual
-     offset (italic glyphs lean and appear indented vs. upright neighbors)
-     AND was the root cause of the edge-clipping we kept patching. Removing
-     it fixes both issues at once. */
-  font-style: normal;
-  font-weight: 500;
+  font-style: italic;
+  font-weight: 400;
   background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  letter-spacing: -0.005em;
+  /* No leading padding (avoids a visible gap between titleLead and accent on
+     wrap). Trailing padding absorbs italic-glyph overhang. The slight visual
+     indent on italic wrap-lines is intentional — Idan likes the look. */
+  padding-inline: 0 0.22em;
+  /* When the span wraps across lines, "clone" applies the trailing padding to
+     EACH line's end – not just the span's final line. Without this, italic
+     glyphs at mid-span wrap boundaries (e.g. the "d" in "end-to-end") get
+     clipped because the trailing padding only kicks in after the whole span. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .hero-tagline {
   font-family: var(--font-mono);
