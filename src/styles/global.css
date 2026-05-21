@@ -136,17 +136,17 @@ button { font-family: inherit; cursor: pointer; }
 }
 .nav-cta:hover { border-color: var(--accent); color: var(--accent); }
 
-/* Burger button — visible only on mobile */
+/* Burger button — visible only on mobile, matches toggle sizing */
 .nav-burger {
   display: none;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border-strong);
-  border-radius: 10px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.02);
-  color: var(--text);
+  color: var(--text-dim);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -156,7 +156,7 @@ button { font-family: inherit; cursor: pointer; }
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.18);
 }
-.nav-burger svg { width: 20px; height: 20px; stroke-width: 1.7; }
+.nav-burger svg { width: 18px; height: 18px; stroke-width: 1.7; }
 
 /* Mobile drawer — slides down from below the navbar */
 .nav-drawer {
@@ -211,8 +211,10 @@ button { font-family: inherit; cursor: pointer; }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .nav-right-desktop { display: none; }
+  .nav-cta-desktop { display: none; }
   .nav-burger { display: inline-flex; }
+  /* Tighten the right-cluster spacing so toggles + burger sit comfortably */
+  .nav-right { gap: 8px; }
 }
 @media (min-width: 769px) {
   .nav-drawer { display: none; }

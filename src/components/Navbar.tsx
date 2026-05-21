@@ -39,7 +39,7 @@ export default function Navbar() {
           <span>idan.kashy</span>
         </a>
 
-        {/* Desktop nav (hidden under 768px) */}
+        {/* Desktop nav links — hidden under 768px */}
         <div className="nav-links">
           <a href="#projects">{t.nav.projects}</a>
           <a href="#about">{t.nav.about}</a>
@@ -47,27 +47,27 @@ export default function Navbar() {
           <a href="#ai">{t.nav.ai}</a>
           <a href="#experience">{t.nav.experience}</a>
         </div>
-        <div className="nav-right nav-right-desktop">
+
+        {/* Right cluster: toggles always visible; CTA on desktop, burger on mobile */}
+        <div className="nav-right">
           <ThemeToggle />
           <LanguageToggle />
-          <a href="#contact" className="nav-cta">
+          <a href="#contact" className="nav-cta nav-cta-desktop">
             {t.nav.getInTouch} <ArrowIcon />
           </a>
+          <button
+            type="button"
+            className="nav-burger"
+            aria-label={menuOpen ? t.chat.closeAria : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(o => !o)}
+          >
+            {menuOpen ? <CloseIcon /> : <BurgerIcon />}
+          </button>
         </div>
-
-        {/* Mobile burger (visible only under 768px) */}
-        <button
-          type="button"
-          className="nav-burger"
-          aria-label={menuOpen ? t.chat.closeAria : 'Open menu'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(o => !o)}
-        >
-          {menuOpen ? <CloseIcon /> : <BurgerIcon />}
-        </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — nav links + Get in touch CTA */}
       <div className={`nav-drawer${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="nav-drawer-links">
           <a href="#projects" onClick={closeAndScrollTo('#projects')}>{t.nav.projects}</a>
@@ -75,10 +75,6 @@ export default function Navbar() {
           <a href="#skills" onClick={closeAndScrollTo('#skills')}>{t.nav.skills}</a>
           <a href="#ai" onClick={closeAndScrollTo('#ai')}>{t.nav.ai}</a>
           <a href="#experience" onClick={closeAndScrollTo('#experience')}>{t.nav.experience}</a>
-        </div>
-        <div className="nav-drawer-tools">
-          <ThemeToggle />
-          <LanguageToggle />
         </div>
         <a
           href="#contact"
