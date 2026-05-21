@@ -56,7 +56,7 @@ export const en = {
     metric2Label: 'H.I.T.',
     metric3Value: 'AI Lead',
     metric3Label: 'Bank Leumi',
-    metric4Value: '.NET · Angular',
+    metric4Value: '.NET · React',
     metric4Label: 'Primary stack',
     codeFile: '~/idan/portfolio.ts',
     codeComment1: '// who.ts',
@@ -219,7 +219,7 @@ export const en = {
     githubLabel: 'GitHub',
     linkedinLabel: 'LinkedIn',
     locationLabel: 'Location',
-    location: 'Israel · Remote-friendly',
+    location: 'Israel',
   },
 
   footer: {

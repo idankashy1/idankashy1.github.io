@@ -38,9 +38,9 @@ export const he: Dict = {
 
   hero: {
     available: 'פנוי להזדמנויות חדשות',
-    titleLead: 'ארכיטקט של',
+    titleLead: 'ארכיטקט',
     titleAccent: 'מערכות מקצה לקצה',
-    titleTail: 'עם קוד נקי במהירות של AI.',
+    titleTail: 'בקוד נקי ובמהירות AI.',
     taglineRole1: 'מפתח Full-Stack',
     taglineRole2: 'ארכיטקט תוכנה',
     taglineRole3: 'AI Lead',
@@ -56,7 +56,7 @@ export const he: Dict = {
     metric2Label: 'H.I.T.',
     metric3Value: 'AI Lead',
     metric3Label: 'בנק לאומי',
-    metric4Value: '.NET · Angular',
+    metric4Value: '.NET · React',
     metric4Label: 'סטאק ראשי',
     codeFile: '~/idan/portfolio.ts',
     codeComment1: '// who.ts',
@@ -219,7 +219,7 @@ export const he: Dict = {
     githubLabel: 'GitHub',
     linkedinLabel: 'LinkedIn',
     locationLabel: 'מיקום',
-    location: 'ישראל · פתוח לעבודה מרחוק',
+    location: 'ישראל',
   },
 
   footer: {

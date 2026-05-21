@@ -1047,6 +1047,17 @@ html[lang="he"] .contact-cta em {
   font-weight: 600;
 }
 
+/* Hebrew Hero accent on RTL wrap lines: without italic the trailing 0.22em
+   padding (kept for English italic overhang) becomes a visible RIGHT-edge
+   inset in RTL. Reset padding + box-decoration-break for Hebrew so the
+   wrapped accent line starts flush against the leading edge like the
+   surrounding regular text. */
+html[lang="he"] .hero h1 .accent-text {
+  padding-inline: 0;
+  -webkit-box-decoration-break: slice;
+  box-decoration-break: slice;
+}
+
 /* Section titles also need looser tracking in Hebrew */
 html[lang="he"] .section-title,
 html[lang="he"] .ai-headline,
