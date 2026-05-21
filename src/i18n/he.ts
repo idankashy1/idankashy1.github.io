@@ -39,8 +39,8 @@ export const he: Dict = {
   hero: {
     available: 'פנוי להזדמנויות חדשות',
     titleLead: 'ארכיטקט של',
-    titleAccent: 'מערכות מקצה-לקצה',
-    titleTail: '– קוד נקי, מהירות של AI.',
+    titleAccent: 'מערכות מקצה לקצה',
+    titleTail: 'עם קוד נקי במהירות של AI.',
     taglineRole1: 'מפתח Full-Stack',
     taglineRole2: 'ארכיטקט תוכנה',
     taglineRole3: 'AI Lead',
