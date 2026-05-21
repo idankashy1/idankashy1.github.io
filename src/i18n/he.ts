@@ -23,7 +23,7 @@ export const he: Dict = {
     badge: 'שאל את KAI',
     headerTitle: 'KAI',
     headerStatus: 'מחובר · מאומן על עידן',
-    welcomeMessage: 'היי 👋 אני KAI – ה-AI clone של עידן (Kashy + AI). שאל אותי כל דבר על הפרויקטים שלו, הסטאק, זרימת ה-AI, או הניסיון.',
+    welcomeMessage: 'היי 👋 אני KAI – ה-AI clone של עידן. שאל אותי כל דבר על הפרויקטים שלו, הסטאק, זרימת ה-AI, או הניסיון.',
     placeholder: 'הקלד שאלה...',
     sendAria: 'שלח',
     closeAria: 'סגור',

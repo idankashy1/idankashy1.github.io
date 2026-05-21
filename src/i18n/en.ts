@@ -23,7 +23,7 @@ export const en = {
     badge: 'Ask KAI',
     headerTitle: 'KAI',
     headerStatus: 'Online · trained on Idan',
-    welcomeMessage: "Hi 👋 I'm KAI — Idan's AI clone (Kashy + AI). Ask me anything about his projects, stack, AI workflow, or experience.",
+    welcomeMessage: "Hi 👋 I'm KAI – Idan's AI clone. Ask me anything about his projects, stack, AI workflow, or experience.",
     placeholder: 'Type a question...',
     sendAria: 'Send',
     closeAria: 'Close',
