@@ -8,17 +8,41 @@ export default function Navbar() {
   const { t } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
 
-  // Close the drawer with Escape, and lock body scroll while open.
+  // iOS-safe body scroll lock + Escape-to-close.
+  // Plain `body { overflow: hidden }` is silently ignored by iOS Safari for
+  // the document scroller, so we use the position-fixed-with-offset trick:
+  //   1. Capture current scrollY.
+  //   2. Pin body to that offset so the visible viewport stays put.
+  //   3. Add `.menu-open` so CSS can swap the navbar from sticky → fixed
+  //      (sticky breaks once body is taken out of normal flow).
+  //   4. On close: undo everything and restore the scroll position.
   useEffect(() => {
     if (!menuOpen) return
+    const scrollY = window.scrollY
+    const body = document.body
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.left = '0'
+    body.style.right = '0'
+    body.style.width = '100%'
+    body.classList.add('menu-open')
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMenuOpen(false)
     }
-    document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
+
     return () => {
-      document.body.style.overflow = ''
+      const savedTop = body.style.top
+      body.style.position = ''
+      body.style.top = ''
+      body.style.left = ''
+      body.style.right = ''
+      body.style.width = ''
+      body.classList.remove('menu-open')
       window.removeEventListener('keydown', onKey)
+      // Restore scroll position after unlocking.
+      if (savedTop) window.scrollTo(0, Math.abs(parseInt(savedTop, 10)))
     }
   }, [menuOpen])
 

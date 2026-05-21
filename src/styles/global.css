@@ -164,6 +164,8 @@ button { font-family: inherit; cursor: pointer; }
   left: 0;
   right: 0;
   top: 100%;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
   background: rgba(8, 10, 16, 0.95);
   backdrop-filter: blur(20px) saturate(140%);
   border-bottom: 1px solid var(--border);
@@ -176,6 +178,16 @@ button { font-family: inherit; cursor: pointer; }
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 49;
+}
+/* When the drawer is open, body has `.menu-open` and is `position: fixed`
+   to lock background scrolling (iOS-safe). Sticky positioning breaks once
+   body leaves normal flow — so we promote .nav to fixed to keep it pinned
+   at the top of the viewport. */
+body.menu-open .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .nav-drawer.open {
   transform: translateY(0);
