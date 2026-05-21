@@ -1512,6 +1512,21 @@ html[dir="rtl"] .chat-msg-ai { flex-direction: row-reverse; }
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+.chat-bubble strong { color: var(--text); font-weight: 600; }
+.chat-bubble em { font-style: italic; color: var(--accent); }
+.chat-bubble code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: rgba(94, 234, 212, 0.1);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+:root[data-theme="light"] .chat-bubble code {
+  background: rgba(20, 184, 166, 0.1);
+  color: #0d9488;
+}
 .chat-msg-user .chat-bubble {
   background: linear-gradient(120deg, rgba(94, 234, 212, 0.18), rgba(167, 139, 250, 0.18));
   border-color: rgba(94, 234, 212, 0.3);

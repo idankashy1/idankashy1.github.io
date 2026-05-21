@@ -95,11 +95,45 @@ function TypingDots() {
   )
 }
 
+/** HTML-escape user-controlled text before applying our own markdown. */
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+/** Minimal markdown → HTML for AI chat bubbles. Handles bold, italic, inline
+ *  code. Inputs are HTML-escaped first, so the rendered HTML is safe. */
+function renderMarkdown(text: string): string {
+  let s = escapeHtml(text)
+  // **bold** — match first so the * inside doesn't get consumed by italic rule.
+  s = s.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+  // *italic* — single * only; negative lookbehind/lookahead guards against
+  // matching what's left from bold or stray asterisks.
+  s = s.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>')
+  // `code` — inline code spans.
+  s = s.replace(/`([^`\n]+)`/g, '<code>$1</code>')
+  return s
+}
+
 function MessageBubble({ msg }: { msg: Message }) {
   const { displayed } = useTypewriter(msg.text, msg.role === 'ai' && msg.typing === true)
+  if (msg.role === 'ai') {
+    return (
+      <div className={`chat-msg chat-msg-${msg.role}`}>
+        <div className="chat-avatar" aria-hidden="true">IK</div>
+        <div
+          className="chat-bubble"
+          dangerouslySetInnerHTML={{ __html: renderMarkdown(displayed) }}
+        />
+      </div>
+    )
+  }
   return (
     <div className={`chat-msg chat-msg-${msg.role}`}>
-      {msg.role === 'ai' && <div className="chat-avatar" aria-hidden="true">IK</div>}
       <div className="chat-bubble">{displayed}</div>
     </div>
   )
